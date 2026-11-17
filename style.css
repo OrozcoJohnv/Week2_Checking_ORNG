@@ -5,11 +5,17 @@
     --ink: #141413;
     --orange: #d97757;
     --dark: #c15f3c;
-    --header: #141413
+    --header: #141413;
+    --heading-font: "Space Grotesk", "DM Sans", sans-serif;
+    --pixel-font: "Pixelify Sans", "Courier New", monospace
 }
 
 * {
     box-sizing: border-box
+}
+
+[hidden] {
+    display: none !important
 }
 
 html {
@@ -30,15 +36,20 @@ h1,
 h2,
 h3,
 nav,
+.button {
+    font-family: var(--heading-font)
+}
+
 .brand,
-.button,
 .eyebrow {
-    font-family: "Pixelify Sans", "Courier New", monospace
+    font-family: var(--pixel-font)
 }
 
 h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.05;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -1px;
     margin: 10px 0 18px
 }
 
@@ -46,6 +57,7 @@ h2 {
     font-size: 2rem
 }
 
+/* ---------- Header ---------- */
 .site-header {
     position: sticky;
     top: 0;
@@ -78,8 +90,7 @@ h2 {
 .brand img {
     width: 34px;
     height: 34px;
-    object-fit: contain;
-    image-rendering: pixelated
+    object-fit: contain
 }
 
 nav {
@@ -91,13 +102,17 @@ nav {
 
 nav a {
     color: white;
-    text-decoration: none
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 3px solid transparent
 }
 
-nav a:hover {
-    color: var(--orange)
+nav a.active {
+    color: var(--orange);
+    border-bottom-color: var(--orange)
 }
 
+/* ---------- Layout ---------- */
 main {
     max-width: 1100px;
     margin: auto
@@ -112,18 +127,17 @@ section {
 }
 
 .hero {
-    min-height: calc(100vh - 116px);
     display: grid;
-    grid-template-columns: 1.2fr .8fr;
+    grid-template-columns: 1fr 1.2fr;
     align-items: center;
-    gap: 50px
+    gap: 30px
 }
 
 .hero-image {
     width: 100%;
-    max-width: 390px;
+    max-width: 620px;
     justify-self: center;
-    image-rendering: pixelated
+    transform: scale(1.15)
 }
 
 .eyebrow {
@@ -140,25 +154,59 @@ section {
     color: var(--ink);
     border: 3px solid var(--ink);
     box-shadow: 4px 4px 0 var(--ink);
-    text-decoration: none
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer
 }
 
 .button:hover {
     background: var(--dark)
 }
 
+/* ---------- Shop ---------- */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px
+}
+
+.filter-btn {
+    padding: 4px 14px;
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    color: var(--ink);
+    background: var(--card);
+    border: 3px solid var(--ink);
+    cursor: pointer
+}
+
+.filter-btn:hover {
+    background: var(--bg)
+}
+
+.filter-btn[aria-pressed="true"] {
+    background: var(--ink);
+    color: white
+}
+
+#filter-status {
+    margin: 10px 0 0;
+    font-size: .9rem
+}
+
 .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-top: 30px
+    margin-top: 20px
 }
 
 .card {
     background: var(--card);
     border: 3px solid var(--ink);
     padding: 18px;
-    box-shadow: 5px 5px 0 var(--orange);
+    box-shadow: 5px 5px 0 var(--ink)
 }
 
 .card img {
@@ -167,13 +215,64 @@ section {
     object-fit: cover;
     background: #ead9ae;
     border: 2px solid var(--ink);
-    image-rendering: pixelated
 }
 
 .price {
     font-weight: 700
 }
 
+.size-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px;
+    padding: 0;
+    border: 0
+}
+
+.size-picker legend {
+    float: left;
+    margin-right: 8px;
+    padding: 0;
+    font-size: .9rem
+}
+
+.size-picker label {
+    position: relative
+}
+
+.size-picker input {
+    position: absolute;
+    opacity: 0
+}
+
+.size-picker span {
+    display: inline-block;
+    min-width: 2.4rem;
+    padding: 2px 8px;
+    text-align: center;
+    background: var(--bg);
+    border: 3px solid var(--ink);
+    cursor: pointer
+}
+
+.size-picker input:checked+span {
+    background: var(--ink);
+    color: white
+}
+
+.size-picker input:focus-visible+span {
+    outline: 3px solid var(--dark);
+    outline-offset: 2px
+}
+
+.card-msg {
+    min-height: 1.6em;
+    margin: 8px 0 0;
+    font-size: .9rem
+}
+
+/* ---------- Collections / Contact ---------- */
 .collection-list {
     margin-top: 30px;
     display: grid;
@@ -197,21 +296,91 @@ section {
     border-top: 3px solid var(--ink)
 }
 
+/* ---------- Cart ---------- */
+#cart-items {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 3px solid var(--ink)
+}
+
+.remove-btn {
+    margin-left: 10px;
+    padding: 0;
+    font: inherit;
+    color: var(--ink);
+    text-decoration: underline;
+    background: none;
+    border: 0;
+    cursor: pointer
+}
+
+.remove-btn:hover {
+    color: var(--dark)
+}
+
+.cart-total {
+    font-family: var(--heading-font);
+    font-size: 1.25rem;
+    font-weight: 700
+}
+
+#checkout-form {
+    max-width: 420px
+}
+
+#checkout-form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: .9rem
+}
+
+#checkout-form input,
+#checkout-form textarea {
+    width: 100%;
+    padding: 8px;
+    font: inherit;
+    background: var(--card);
+    border: 3px solid var(--ink)
+}
+
+#order-message {
+    padding: 14px;
+    background: var(--card);
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink)
+}
+
+/* ---------- Footer ---------- */
 footer {
     position: sticky;
     bottom: 0;
     z-index: 10;
     min-height: 48px;
-    padding: 6px 10px;
+    padding: 6px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: var(--header);
     color: white;
+    font-size: .9rem;
     border-top: 3px solid var(--orange)
 }
 
+footer p {
+    margin: 0
+}
+
+/* ---------- Mobile ---------- */
 @media(max-width:700px) {
     .header-inner {
         align-items: flex-start;
@@ -227,16 +396,72 @@ footer {
         text-align: center
     }
 
-    .hero p {
-        margin-left: auto;
-        margin-right: auto
-    }
-
     .products {
         grid-template-columns: 1fr
     }
 
     section {
-        padding: 50px 20px
+        padding: 30px 20px
+    }
+}
+
+
+/* ---------- HERO DECORATION (stripes, sparkles, burst, globe) ----------
+   Paste from here to the end of your style.css.
+   Colors are #d97757 (your --orange) inside the pictures; change the hex there to recolor. */
+body {
+    overflow-x: hidden
+}
+
+.hero {
+    position: relative
+}
+
+.hero>* {
+    position: relative;
+    z-index: 1
+}
+
+/* stripes top-left and bottom-right, sparkles bottom-left and top-right, burst near the product */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 80'%3E%3Cg fill='%23d97757'%3E%3Cpolygon points='0,80 28,0 56,0 28,80'/%3E%3Cpolygon points='46,80 74,0 102,0 74,80'/%3E%3Cpolygon points='92,80 120,0 148,0 120,80'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 100'%3E%3Cg fill='%23d97757'%3E%3Cpolygon points='0,100 50,0 66,0 16,100'/%3E%3Cpolygon points='34,100 84,0 100,0 50,100'/%3E%3Cpolygon points='68,100 118,0 134,0 84,100'/%3E%3Cpolygon points='102,100 152,0 168,0 118,100'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d97757' d='M50 0 Q54 46 100 50 Q54 54 50 100 Q46 54 0 50 Q46 46 50 0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d97757' d='M50 0 Q54 46 100 50 Q54 54 50 100 Q46 54 0 50 Q46 46 50 0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg stroke='%23d97757' stroke-width='6' stroke-linecap='round' fill='none'%3E%3Cpath d='M6 52 L28 48'/%3E%3Cpath d='M12 30 L30 40'/%3E%3Cpath d='M30 8 L38 28'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left top 20px, right bottom 20px, left 5% bottom 40px, right 4% top 40px, 56% 24%;
+    background-size: 170px auto, 200px auto, 56px auto, 44px auto, 56px auto
+}
+
+/* faint globe lines behind the hero picture */
+.hero::after {
+    content: "";
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    width: 480px;
+    height: 480px;
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23d97757' stroke-width='3' stroke-opacity='.3'%3E%3Ccircle cx='200' cy='200' r='190'/%3E%3Cellipse cx='200' cy='200' rx='95' ry='190'/%3E%3Cellipse cx='200' cy='200' rx='190' ry='70'/%3E%3Cline x1='200' y1='10' x2='200' y2='390'/%3E%3Cline x1='10' y1='200' x2='390' y2='200'/%3E%3Cpath d='M30 120 Q200 170 370 120'/%3E%3Cpath d='M30 280 Q200 330 370 280'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat
+}
+
+@media(max-width:700px) {
+    .hero::before {
+        background-size: 100px auto, 120px auto, 36px auto, 30px auto, 36px auto
+    }
+
+    .hero::after {
+        width: 300px;
+        height: 300px;
+        right: -60px;
+        top: 70%
     }
 }

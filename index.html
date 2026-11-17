@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Pixelify+Sans:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,8 +17,13 @@
     <header class="site-header">
         <div class="header-inner">
             <a class="brand" href="#home"><img src="logo.png" alt="ORNG logo"><span>ORNG</span></a>
-            <nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#collections">Collections</a><a
-                    href="#about">About</a><a href="#contact">Contact</a><a href="#cart">Cart (0)</a></nav>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -31,41 +36,52 @@
                     guide.</p>
                 <a class="button" href="#shop">Shop now</a>
             </div>
-            <img class="hero-image" src="logo.png" alt="ORNG pixel orange">
+            <img class="hero-image" src="home.png" alt="ORNG pixel orange">
         </section>
 
+        <!-- SHOP: 3 categories, 8 items each (cards are made by script.js) -->
         <section id="shop">
             <p class="eyebrow">01 / SHOP</p>
-            <h2>Featured pieces</h2>
-            <p>Easy-to-wear pieces made for everyday outfits.</p>
-            <div class="products">
-                <article class="card"><img src="img1.jpg" alt="Glitch Tee">
-                    <h3>Glitch Tee</h3>
-                    <p class="price">₱890</p>
-                    <p>Boxy fit. True to size.</p><a class="button" href="#cart">Add to cart</a>
-                </article>
-                <article class="card"><img src="img2.jpg" alt="Pixel Hoodie">
-                    <h3>Pixel Hoodie</h3>
-                    <p class="price">₱2,190</p>
-                    <p>Oversized fit. Size down for regular fit.</p><a class="button" href="#cart">Add to cart</a>
-                </article>
-                <article class="card"><img src="img3.jpg" alt="Cargo Pants">
-                    <h3>Cargo Pants</h3>
-                    <p class="price">₱1,190</p>
-                    <p>Relaxed fit. True to size.</p><a class="button" href="#cart">Add to cart</a>
-                </article>
+            <h2>Shop</h2>
+            <p>Pick a category, choose a size, then add it to your cart.</p>
+
+            <div class="filters">
+                <button type="button" class="filter-btn" data-category="Tops" aria-pressed="true">Tops</button>
+                <button type="button" class="filter-btn" data-category="Outerwear"
+                    aria-pressed="false">Outerwear</button>
+                <button type="button" class="filter-btn" data-category="Bottoms" aria-pressed="false">Bottoms</button>
             </div>
+            <p id="filter-status"></p>
+
+            <div class="products" id="products"></div>
         </section>
 
-        <section id="collections">
-            <p class="eyebrow">02 / COLLECTIONS</p>
-            <h2>Pixel basics</h2>
-            <p>Minimal pieces inspired by digital art, old-school games and modern streetwear.</p>
-            <div class="collection-list">
-                <div><strong>01</strong><span>Everyday Pixel</span></div>
-                <div><strong>02</strong><span>Orange Signal</span></div>
-                <div><strong>03</strong><span>After School</span></div>
+        <!-- CART -->
+        <section id="cart">
+            <p class="eyebrow">02 / CART</p>
+            <h2>Your cart</h2>
+
+            <div id="cart-empty">
+                <p>Your cart is empty. Pick a piece from the shop and it will appear here.</p>
+                <a class="button" href="#shop">Back to shop</a>
             </div>
+
+            <div id="cart-box" hidden>
+                <ul id="cart-items"></ul>
+                <p class="cart-total">Total: <span id="cart-total">₱0</span></p>
+
+                <form id="checkout-form">
+                    <label for="name">Full name</label>
+                    <input id="name" type="text" required>
+
+                    <label for="address">Delivery address</label>
+                    <textarea id="address" rows="2" required></textarea>
+
+                    <button type="submit" class="button">Place order</button>
+                </form>
+            </div>
+
+            <p id="order-message" hidden></p>
         </section>
 
         <section id="about">
@@ -86,16 +102,13 @@
                 <div><strong>Facebook</strong><span>ORNG Streetwear</span></div>
             </div>
         </section>
-
-        <section id="cart">
-            <p class="eyebrow">05 / CART</p>
-            <h2>Your cart is empty.</h2>
-            <p>Pick a piece from the shop and it will appear here.</p><a class="button" href="#shop">Back to shop</a>
-        </section>
     </main>
+
     <footer>
         <p>ORNG © 2026 — Pixel streetwear, kept simple.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

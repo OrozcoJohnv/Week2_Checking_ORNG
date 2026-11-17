@@ -1,429 +1,40 @@
-/* ORNG - simple beginner-friendly CSS */
-:root {
-    --bg: #f7e8ca;
-    --card: #fffaf0;
-    --ink: #141413;
-    --orange: #d97757;
-    --dark: #c15f3c;
-    --header: #141413;
-    --heading-font: "Space Grotesk", "DM Sans", sans-serif;
-    --pixel-font: "Pixelify Sans", "Courier New", monospace
-}
+/* ==========================================================
+   EXTRA DESIGN: each section gets its own decoration
+   Paste this whole block at the very bottom of style.css.
+   Shapes use your orange (#d97757) and ink (#141413) inside the pictures.
+   ========================================================== */
 
-* {
-    box-sizing: border-box
-}
-
-[hidden] {
-    display: none !important
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 68px;
-    scroll-padding-bottom: 48px
-}
-
-body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "DM Sans", sans-serif;
-    line-height: 1.6
-}
-
-h1,
-h2,
-h3,
-nav,
-.button {
-    font-family: var(--heading-font)
-}
-
-.brand,
-.eyebrow {
-    font-family: var(--pixel-font)
-}
-
-h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.1;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin: 10px 0 18px
-}
-
-h2 {
-    font-size: 2rem
-}
-
-/* ---------- Header ---------- */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--header);
-    border-bottom: 3px solid var(--orange)
-}
-
-.header-inner {
-    max-width: 1100px;
-    min-height: 68px;
-    margin: auto;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--orange);
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 700
-}
-
-.brand img {
-    width: 34px;
-    height: 34px;
-    object-fit: contain
-}
-
-nav {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: flex-end
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 4px 0;
-    border-bottom: 3px solid transparent
-}
-
-nav a.active {
-    color: var(--orange);
-    border-bottom-color: var(--orange)
-}
-
-/* ---------- Layout ---------- */
-main {
-    max-width: 1100px;
-    margin: auto
-}
-
-section {
-    min-height: calc(100vh - 116px);
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center
-}
-
-.hero {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    align-items: center;
-    gap: 30px
-}
-
-.hero-image {
-    width: 100%;
-    max-width: 620px;
-    justify-self: center;
-    transform: scale(1.15)
-}
-
-.eyebrow {
-    color: var(--dark);
-    font-weight: 700;
-    letter-spacing: 1px
-}
-
-.button {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 18px;
-    background: var(--orange);
-    color: var(--ink);
-    border: 3px solid var(--ink);
-    box-shadow: 4px 4px 0 var(--ink);
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer
-}
-
-.button:hover {
-    background: var(--dark)
-}
-
-/* ---------- Shop ---------- */
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px
-}
-
-.filter-btn {
-    padding: 4px 14px;
-    font-family: var(--heading-font);
-    font-size: 1rem;
-    color: var(--ink);
-    background: var(--card);
-    border: 3px solid var(--ink);
-    cursor: pointer
-}
-
-.filter-btn:hover {
-    background: var(--bg)
-}
-
-.filter-btn[aria-pressed="true"] {
-    background: var(--ink);
-    color: white
-}
-
-#filter-status {
-    margin: 10px 0 0;
-    font-size: .9rem
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 20px
-}
-
-.card {
-    background: var(--card);
-    border: 3px solid var(--ink);
-    padding: 18px;
-    box-shadow: 5px 5px 0 var(--ink)
-}
-
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    background: #ead9ae;
-    border: 2px solid var(--ink);
-}
-
-.price {
-    font-weight: 700
-}
-
-.size-picker {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 8px;
-    padding: 0;
-    border: 0
-}
-
-.size-picker legend {
-    float: left;
-    margin-right: 8px;
-    padding: 0;
-    font-size: .9rem
-}
-
-.size-picker label {
-    position: relative
-}
-
-.size-picker input {
-    position: absolute;
-    opacity: 0
-}
-
-.size-picker span {
-    display: inline-block;
-    min-width: 2.4rem;
-    padding: 2px 8px;
-    text-align: center;
-    background: var(--bg);
-    border: 3px solid var(--ink);
-    cursor: pointer
-}
-
-.size-picker input:checked+span {
-    background: var(--ink);
-    color: white
-}
-
-.size-picker input:focus-visible+span {
-    outline: 3px solid var(--dark);
-    outline-offset: 2px
-}
-
-.card-msg {
-    min-height: 1.6em;
-    margin: 8px 0 0;
-    font-size: .9rem
-}
-
-/* ---------- Collections / Contact ---------- */
-.collection-list {
-    margin-top: 30px;
-    display: grid;
-    gap: 10px
-}
-
-.collection-list div {
-    display: flex;
-    gap: 20px;
-    padding: 18px;
-    background: var(--card);
-    border: 3px solid var(--ink)
-}
-
-.collection-list strong {
-    color: var(--dark)
-}
-
-#about,
-#cart {
-    border-top: 3px solid var(--ink)
-}
-
-/* ---------- Cart ---------- */
-#cart-items {
-    margin: 0;
-    padding: 0;
-    list-style: none
-}
-
-.cart-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 3px solid var(--ink)
-}
-
-.remove-btn {
-    margin-left: 10px;
-    padding: 0;
-    font: inherit;
-    color: var(--ink);
-    text-decoration: underline;
-    background: none;
-    border: 0;
-    cursor: pointer
-}
-
-.remove-btn:hover {
-    color: var(--dark)
-}
-
-.cart-total {
-    font-family: var(--heading-font);
-    font-size: 1.25rem;
-    font-weight: 700
-}
-
-#checkout-form {
-    max-width: 420px
-}
-
-#checkout-form label {
+/* small chunky bar under every section title (not the home headline) */
+section:not(.hero) h2::after {
+    content: "";
     display: block;
-    margin-top: 12px;
-    font-weight: 700;
-    font-size: .9rem
-}
-
-#checkout-form input,
-#checkout-form textarea {
-    width: 100%;
-    padding: 8px;
-    font: inherit;
-    background: var(--card);
-    border: 3px solid var(--ink)
-}
-
-#order-message {
-    padding: 14px;
-    background: var(--card);
-    border: 3px solid var(--ink);
+    width: 64px;
+    height: 6px;
+    margin-top: 8px;
+    background: var(--orange);
     box-shadow: 4px 4px 0 var(--ink)
 }
 
-/* ---------- Footer ---------- */
-footer {
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    min-height: 48px;
-    padding: 6px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: var(--header);
-    color: white;
-    font-size: .9rem;
-    border-top: 3px solid var(--orange)
-}
-
-footer p {
-    margin: 0
-}
-
-/* ---------- Mobile ---------- */
-@media(max-width:700px) {
-    .header-inner {
-        align-items: flex-start;
-        flex-direction: column
-    }
-
-    nav {
-        gap: 10px
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center
-    }
-
-    .products {
-        grid-template-columns: 1fr
-    }
-
-    section {
-        padding: 30px 20px
-    }
-}
-
-
-/* ---------- HERO DECORATION (stripes, sparkles, burst, globe) ----------
-   Paste from here to the end of your style.css.
-   Colors are #d97757 (your --orange) inside the pictures; change the hex there to recolor. */
-body {
-    overflow-x: hidden
-}
-
-.hero {
+/* shared setup: decoration sits behind the content and spans the whole screen width */
+#shop,
+#cart,
+#about,
+#contact {
     position: relative
 }
 
-.hero>* {
+#shop>*,
+#cart>*,
+#about>*,
+#contact>* {
     position: relative;
     z-index: 1
 }
 
-/* stripes top-left and bottom-right, sparkles bottom-left and top-right, burst near the product */
-.hero::before {
+#shop::before,
+#cart::before,
+#about::before,
+#contact::before {
     content: "";
     position: absolute;
     top: 0;
@@ -433,35 +44,44 @@ body {
     transform: translateX(-50%);
     z-index: 0;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 190 80'%3E%3Cg fill='%23d97757'%3E%3Cpolygon points='0,80 28,0 56,0 28,80'/%3E%3Cpolygon points='46,80 74,0 102,0 74,80'/%3E%3Cpolygon points='92,80 120,0 148,0 120,80'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 100'%3E%3Cg fill='%23d97757'%3E%3Cpolygon points='0,100 50,0 66,0 16,100'/%3E%3Cpolygon points='34,100 84,0 100,0 50,100'/%3E%3Cpolygon points='68,100 118,0 134,0 84,100'/%3E%3Cpolygon points='102,100 152,0 168,0 118,100'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d97757' d='M50 0 Q54 46 100 50 Q54 54 50 100 Q46 54 0 50 Q46 46 50 0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d97757' d='M50 0 Q54 46 100 50 Q54 54 50 100 Q46 54 0 50 Q46 46 50 0Z'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cg stroke='%23d97757' stroke-width='6' stroke-linecap='round' fill='none'%3E%3Cpath d='M6 52 L28 48'/%3E%3Cpath d='M12 30 L30 40'/%3E%3Cpath d='M30 8 L38 28'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: left top 20px, right bottom 20px, left 5% bottom 40px, right 4% top 40px, 56% 24%;
-    background-size: 170px auto, 200px auto, 56px auto, 44px auto, 56px auto
+    background-repeat: no-repeat
 }
 
-/* faint globe lines behind the hero picture */
-.hero::after {
-    content: "";
-    position: absolute;
-    right: -30px;
-    top: 50%;
-    width: 480px;
-    height: 480px;
-    transform: translateY(-50%);
-    z-index: 0;
-    pointer-events: none;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23d97757' stroke-width='3' stroke-opacity='.3'%3E%3Ccircle cx='200' cy='200' r='190'/%3E%3Cellipse cx='200' cy='200' rx='95' ry='190'/%3E%3Cellipse cx='200' cy='200' rx='190' ry='70'/%3E%3Cline x1='200' y1='10' x2='200' y2='390'/%3E%3Cline x1='10' y1='200' x2='390' y2='200'/%3E%3Cpath d='M30 120 Q200 170 370 120'/%3E%3Cpath d='M30 280 Q200 330 370 280'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat
+/* SHOP: dot grid, zigzag line and plus signs (price-tag / label feel) */
+#shop::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23d97757'%3E%3Ccircle cx='10' cy='10' r='4'/%3E%3Ccircle cx='10' cy='30' r='4'/%3E%3Ccircle cx='10' cy='50' r='4'/%3E%3Ccircle cx='10' cy='70' r='4'/%3E%3Ccircle cx='10' cy='90' r='4'/%3E%3Ccircle cx='10' cy='110' r='4'/%3E%3Ccircle cx='30' cy='10' r='4'/%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='30' cy='50' r='4'/%3E%3Ccircle cx='30' cy='70' r='4'/%3E%3Ccircle cx='30' cy='90' r='4'/%3E%3Ccircle cx='30' cy='110' r='4'/%3E%3Ccircle cx='50' cy='10' r='4'/%3E%3Ccircle cx='50' cy='30' r='4'/%3E%3Ccircle cx='50' cy='50' r='4'/%3E%3Ccircle cx='50' cy='70' r='4'/%3E%3Ccircle cx='50' cy='90' r='4'/%3E%3Ccircle cx='50' cy='110' r='4'/%3E%3Ccircle cx='70' cy='10' r='4'/%3E%3Ccircle cx='70' cy='30' r='4'/%3E%3Ccircle cx='70' cy='50' r='4'/%3E%3Ccircle cx='70' cy='70' r='4'/%3E%3Ccircle cx='70' cy='90' r='4'/%3E%3Ccircle cx='70' cy='110' r='4'/%3E%3Ccircle cx='90' cy='10' r='4'/%3E%3Ccircle cx='90' cy='30' r='4'/%3E%3Ccircle cx='90' cy='50' r='4'/%3E%3Ccircle cx='90' cy='70' r='4'/%3E%3Ccircle cx='90' cy='90' r='4'/%3E%3Ccircle cx='90' cy='110' r='4'/%3E%3Ccircle cx='110' cy='10' r='4'/%3E%3Ccircle cx='110' cy='30' r='4'/%3E%3Ccircle cx='110' cy='50' r='4'/%3E%3Ccircle cx='110' cy='70' r='4'/%3E%3Ccircle cx='110' cy='90' r='4'/%3E%3Ccircle cx='110' cy='110' r='4'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 24'%3E%3Cpolyline points='3,21 23,3 43,21 63,3 83,21 103,3 123,21 143,3 163,21 183,3 197,21' fill='none' stroke='%23d97757' stroke-width='6' stroke-linejoin='miter'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4V36M4 20H36' stroke='%23d97757' stroke-width='8' fill='none'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4V36M4 20H36' stroke='%23d97757' stroke-width='8' fill='none'/%3E%3C/svg%3E");
+    background-position: right 4% top 28px, left 2% bottom 24px, left 2% top 90px, right 3% bottom 80px;
+    background-size: 130px auto, 190px auto, 28px auto, 22px auto
 }
 
+/* CART: rings, barcode and a sparkle (receipt / checkout feel) */
+#cart::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23d97757' stroke-width='6' stroke-opacity='.4'%3E%3Ccircle cx='150' cy='150' r='140'/%3E%3Ccircle cx='150' cy='150' r='105'/%3E%3Ccircle cx='150' cy='150' r='70'/%3E%3Ccircle cx='150' cy='150' r='35' fill='%23d97757' fill-opacity='.35'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 60'%3E%3Cg fill='%23141413'%3E%3Crect x='0' y='0' width='8' height='60'/%3E%3Crect x='12' y='0' width='4' height='60'/%3E%3Crect x='20' y='0' width='12' height='60'/%3E%3Crect x='36' y='0' width='4' height='60'/%3E%3Crect x='44' y='0' width='4' height='60'/%3E%3Crect x='52' y='0' width='8' height='60'/%3E%3Crect x='64' y='0' width='16' height='60'/%3E%3Crect x='84' y='0' width='4' height='60'/%3E%3Crect x='92' y='0' width='8' height='60'/%3E%3Crect x='104' y='0' width='4' height='60'/%3E%3Crect x='112' y='0' width='12' height='60'/%3E%3Crect x='128' y='0' width='4' height='60'/%3E%3Crect x='136' y='0' width='8' height='60'/%3E%3Crect x='148' y='0' width='4' height='60'/%3E%3Crect x='156' y='0' width='4' height='60'/%3E%3Crect x='164' y='0' width='12' height='60'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d97757' d='M50 0 Q54 46 100 50 Q54 54 50 100 Q46 54 0 50 Q46 46 50 0Z'/%3E%3C/svg%3E");
+    background-position: right -70px top -30px, left 3% bottom 30px, right 12% bottom 50px;
+    background-size: 300px auto, 170px auto, 44px auto
+}
+
+/* ABOUT: orange slice, squiggle and a sparkle (the brand story) */
+#about::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='140' fill='%23d97757' fill-opacity='.14' stroke='%23d97757' stroke-width='6'/%3E%3Cg stroke='%23d97757' stroke-width='5' stroke-opacity='.7'%3E%3Ccircle cx='150' cy='150' r='118' fill='none'/%3E%3Cline x1='150' y1='150' x2='270.0' y2='150.0'/%3E%3Cline x1='150' y1='150' x2='234.9' y2='234.9'/%3E%3Cline x1='150' y1='150' x2='150.0' y2='270.0'/%3E%3Cline x1='150' y1='150' x2='65.1' y2='234.9'/%3E%3Cline x1='150' y1='150' x2='30.0' y2='150.0'/%3E%3Cline x1='150' y1='150' x2='65.1' y2='65.1'/%3E%3Cline x1='150' y1='150' x2='150.0' y2='30.0'/%3E%3Cline x1='150' y1='150' x2='234.9' y2='65.1'/%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 30'%3E%3Cpath d='M4 15 Q20 -2 36 15 T68 15 T100 15 T132 15 T164 15 T196 15 T216 15' fill='none' stroke='%23d97757' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23d97757' d='M50 0 Q54 46 100 50 Q54 54 50 100 Q46 54 0 50 Q46 46 50 0Z'/%3E%3C/svg%3E");
+    background-position: right -110px center, left 3% top 36px, left 6% bottom 50px;
+    background-size: 320px auto, 200px auto, 50px auto
+}
+
+/* CONTACT: pixel stairs in two corners (nod to the pixel theme) */
+#contact::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160' shape-rendering='crispEdges'%3E%3Cg fill='%23d97757'%3E%3Crect x='128' y='0' width='32' height='32'/%3E%3Crect x='96' y='32' width='64' height='32'/%3E%3Crect x='64' y='64' width='96' height='32'/%3E%3Crect x='32' y='96' width='128' height='32'/%3E%3Crect x='0' y='128' width='160' height='32'/%3E%3C/g%3E%3Crect x='128' y='32' width='32' height='32' fill='%23141413'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' shape-rendering='crispEdges'%3E%3Cg fill='%23d97757'%3E%3Crect x='0' y='0' width='32' height='32'/%3E%3Crect x='0' y='32' width='64' height='32'/%3E%3Crect x='0' y='64' width='96' height='32'/%3E%3Crect x='0' y='96' width='128' height='32'/%3E%3C/g%3E%3C/svg%3E");
+    background-position: right bottom 20px, left top 20px;
+    background-size: 150px auto, 100px auto
+}
+
+/* phones: smaller and softer so text stays easy to read */
 @media(max-width:700px) {
-    .hero::before {
-        background-size: 100px auto, 120px auto, 36px auto, 30px auto, 36px auto
-    }
 
-    .hero::after {
-        width: 300px;
-        height: 300px;
-        right: -60px;
-        top: 70%
+    #shop::before,
+    #cart::before,
+    #about::before,
+    #contact::before {
+        opacity: .4
     }
 }

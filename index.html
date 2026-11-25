@@ -2,236 +2,111 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ORNG | Mountain Outfitters</title>
-  <meta name="description" content="Technical shells, down layers and trail-ready basics for men and women.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ORNG | Pixel Streetwear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Pixelify+Sans:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#home"><img src="logo.png" alt="ORNG logo"><span>ORNG</span></a>
-      <nav>
-        <a href="#home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span>Home</span></a>
-        <a href="#shop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Shop</span></a>
-        <a href="#cart" aria-label="Cart"><span class="icon-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l2.5 12h11l2-8H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span id="cart-count" class="cart-badge" hidden>0</span></span><span>Cart</span></a>
-        <a href="#about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.5"/></svg><span>About</span></a>
-        <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 7l9 6 9-6"/></svg><span>Contact</span></a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <div>
-        <p class="eyebrow">ORNG / Mountain Outfitters</p>
-        <h1>Gear built for the long way up.</h1>
-        <p>Technical shells, down layers and trail-ready basics, made for cold ridges and long days. Every piece lists its weight, waterproof rating and best use.</p>
-        <a class="button button--ghost hero-gender" href="#shop" data-gender="Men">Shop men</a>
-        <a class="button button--ghost hero-gender" href="#shop" data-gender="Women">Shop women</a>
-      </div>
-      <img class="hero-image" src="home.png" alt="ORNG mountain gear">
-    </section>
-
-    <!-- SHOP: men / women, then 3 categories (cards are made by script.js) -->
-    <section id="shop">
-      <p class="eyebrow">01 / Shop</p>
-      <h2>Shop the gear</h2>
-      <p>Pick men's or women's, choose a layer, then add it to your cart.</p>
-
-      <div class="filters genders">
-        <button type="button" class="filter-btn gender-btn" data-gender="All" aria-pressed="true">All</button>
-        <button type="button" class="filter-btn gender-btn" data-gender="Men" aria-pressed="false">Men</button>
-        <button type="button" class="filter-btn gender-btn" data-gender="Women" aria-pressed="false">Women</button>
-      </div>
-      <div class="filters cats">
-        <button type="button" class="filter-btn cat-btn" data-category="Tops" aria-pressed="true">Tops</button>
-        <button type="button" class="filter-btn cat-btn" data-category="Outerwear" aria-pressed="false">Outerwear</button>
-        <button type="button" class="filter-btn cat-btn" data-category="Bottoms" aria-pressed="false">Bottoms</button>
-      </div>
-      <p id="filter-status" role="status"></p>
-
-      <div class="products" id="products"></div>
-    </section>
-
-    <section id="cart">
-      <p class="eyebrow">02 / Cart</p>
-      <h2>Your cart</h2>
-
-      <div id="cart-empty">
-        <p>Your cart is empty. Pick a piece from the shop and it will appear here.</p>
-        <a class="button" href="#shop">Back to shop</a>
-      </div>
-
-      <div id="cart-box" class="cart-layout" hidden>
-        <ul id="cart-items"></ul>
-
-        <aside class="summary">
-          <h3>Order summary</h3>
-          <dl>
-            <div><dt>Subtotal</dt><dd id="cart-subtotal">₱0</dd></div>
-            <div><dt>Shipping</dt><dd id="cart-shipping">₱0</dd></div>
-            <div class="total-row"><dt>Total</dt><dd id="cart-total">₱0</dd></div>
-          </dl>
-          <p class="hint">Free shipping on orders over ₱5,000.</p>
-
-          <form id="checkout-form">
-            <label for="name">Full name</label>
-            <input id="name" type="text" autocomplete="name" required>
-            <label for="email">Email</label>
-            <input id="email" type="email" autocomplete="email" required>
-            <label for="address">Delivery address</label>
-            <textarea id="address" rows="2" autocomplete="street-address" required></textarea>
-            <label for="payment">Payment method</label>
-            <select id="payment">
-              <option>Cash on delivery</option>
-              <option>GCash</option>
-              <option>Card</option>
-            </select>
-            <button type="submit" class="button">Place order</button>
-          </form>
-        </aside>
-      </div>
-    </section>
-
-    <section id="about">
-      <p class="eyebrow">03 / About</p>
-      <h2>Made for the mountain.</h2>
-      <p>ORNG started with cold hands and a heavy pack. We design lightweight layers that work on long ridges, wet trails and windy summits, and we test every piece before it reaches you.</p>
-      <p>Each product lists its weight, waterproof rating and best use, so you can pack with confidence.</p>
-    </section>
-
-    <section id="contact">
-  <p class="eyebrow">04 / Contact</p>
-  <h2>Get in touch.</h2>
-  <p>Questions about gear, orders or sizing? Send us a message, or grab a quick answer first.</p>
-
-  <ul class="trust">
-    <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20l7-12 4 6 3-4 6 10z"/></svg>
-      <h3>Trail-tested.</h3>
-      <p>Every piece is field-tested before it ships.</p>
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/></svg>
-      <h3>30-day returns.</h3>
-      <p>Unworn gear with tags can go back for an exchange.</p>
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/><path d="M8 12h2M14 12h2M12 8v2M12 14v2"/></svg>
-      <h3>Repair, don't replace.</h3>
-      <p>We patch any ORNG piece free for 2 years.</p>
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg>
-      <h3>Ships in 24 hours.</h3>
-      <p>Free shipping on orders over ₱5,000.</p>
-    </li>
-  </ul>
-
-  <div class="contact-grid">
-    <!-- LEFT: message form -->
-    <div class="panel">
-      <h3>Send us a message</h3>
-
-      <form id="contact-form">
-        <label for="c-email">Email</label>
-        <input id="c-email" type="email" autocomplete="email" placeholder="you@email.com" required>
-
-        <fieldset class="topics">
-          <legend>What is it about?</legend>
-          <label><input type="radio" name="topic" value="Order" checked><span>Order</span></label>
-          <label><input type="radio" name="topic" value="Sizing"><span>Sizing</span></label>
-          <label><input type="radio" name="topic" value="Gear advice"><span>Gear advice</span></label>
-          <label><input type="radio" name="topic" value="Other"><span>Other</span></label>
-        </fieldset>
-
-        <label for="contact-message">Message</label>
-        <textarea id="contact-message" rows="4" maxlength="300" placeholder="Tell us about your trip or your question..." required></textarea>
-        <p class="counter" id="contact-count">0 / 300</p>
-
-        <label class="check-row"><input type="checkbox" id="c-news"> Also send me new-gear and trail updates</label>
-        <button type="submit" class="button">Send message</button>
-      </form>
-
-      <div id="contact-success" class="sent" hidden>
-        <svg class="check" viewBox="0 0 52 52" aria-hidden="true"><circle class="check-circle" cx="26" cy="26" r="24"/><path class="check-mark" d="M14 27l8 8 16-17"/></svg>
-        <h3>Message sent!</h3>
-        <p id="contact-success-text"></p>
-        <button type="button" class="button button--ghost" id="contact-again">Send another</button>
-      </div>
-    </div>
-
-    <!-- RIGHT: quick answers + find us -->
-    <div class="panel">
-      <h3>Need help? Quick answers</h3>
-      <div class="filters">
-        <button type="button" class="filter-btn help-pill" data-help="order" aria-pressed="false">Order status</button>
-        <button type="button" class="filter-btn help-pill" data-help="size" aria-pressed="false">Size &amp; fit</button>
-        <button type="button" class="filter-btn help-pill" data-help="returns" aria-pressed="false">Returns</button>
-        <button type="button" class="filter-btn help-pill" data-help="repair" aria-pressed="false">Care &amp; repair</button>
-        <button type="button" class="filter-btn help-pill" data-help="shipping" aria-pressed="false">Shipping</button>
-      </div>
-      <div id="help-answer" class="answer" role="status"><p>Pick a topic above to see a quick answer.</p></div>
-
-      <h3>Find us</h3>
-      <div class="contact-list">
-        <div><strong>Email</strong><span><a href="mailto:hello@orng.example">hello@orng.example</a></span></div>
-        <div><strong>Instagram</strong><span>@orngoutfitters</span></div>
-        <div><strong>Facebook</strong><span>ORNG Outfitters</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-  </main>
-
-  <footer>
-    <p>ORNG © 2026 — Mountain gear for the long way up.</p>
-  </footer>
-
-  <!-- ORDER POPUP -->
-  <div id="order-modal" class="modal" hidden>
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <svg class="check" viewBox="0 0 52 52" aria-hidden="true"><circle class="check-circle" cx="26" cy="26" r="24"/><path class="check-mark" d="M14 27l8 8 16-17"/></svg>
-      <h2 id="modal-title">Order confirmed!</h2>
-      <p id="modal-text"></p>
-      <span class="order-no" id="modal-number"></span>
-      <ul id="modal-items"></ul>
-      <p class="modal-total">Total: <span id="modal-total"></span></p>
-      <p class="hint" id="modal-delivery"></p>
-      <button type="button" class="button" id="modal-close">Continue shopping</button>
-    </div>
-  </div>
-
-  <!-- ADDED TO CART POPUP -->
-  <div id="added-modal" class="modal modal--corner" hidden>
-    <div class="added-card" role="dialog" aria-modal="true" aria-labelledby="added-title">
-      <div class="added-head">
-        <h3 id="added-title">Added to cart</h3>
-        <button type="button" class="added-x" id="added-close" aria-label="Close">&times;</button>
-      </div>
-      <div class="added-item">
-        <img id="added-img" src="" alt="">
-        <div>
-          <strong id="added-name"></strong>
-          <p class="price" id="added-price"></p>
-          <p class="added-meta" id="added-meta"></p>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#home"><img src="logo.png" alt="ORNG logo"><span>ORNG</span></a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-      </div>
-      <div class="added-actions">
-        <a class="button button--dark" href="#cart" id="added-checkout">Checkout</a>
-        <button type="button" class="button button--ghost" id="added-continue">Continue shopping</button>
-      </div>
-      <p class="hint" id="added-summary"></p>
-    </div>
-  </div>
+    </header>
 
-  <script src="script.js"></script>
+    <main>
+        <section id="home" class="hero">
+            <div>
+                <p class="eyebrow">ORNG / SMALL-BATCH STREETWEAR</p>
+                <h1>Streetwear that fits the way you expect.</h1>
+                <p>Simple tees, hoodies and cargos with a pixel twist. Every piece includes a clear fit note and size
+                    guide.</p>
+                <a class="button" href="#shop">Shop now</a>
+            </div>
+            <img class="hero-image" src="home.png" alt="ORNG pixel orange">
+        </section>
+
+        <section id="shop">
+            <p class="eyebrow">01 / SHOP</p>
+            <h2>Shop</h2>
+            <p>Pick a category, choose a size, then add it to your cart.</p>
+
+            <div class="filters">
+                <button type="button" class="filter-btn" data-category="Tops" aria-pressed="true">Tops</button>
+                <button type="button" class="filter-btn" data-category="Outerwear"
+                    aria-pressed="false">Outerwear</button>
+                <button type="button" class="filter-btn" data-category="Bottoms" aria-pressed="false">Bottoms</button>
+            </div>
+            <p id="filter-status"></p>
+
+            <div class="products" id="products"></div>
+        </section>
+
+        <section id="cart">
+            <p class="eyebrow">02 / CART</p>
+            <h2>Your cart</h2>
+
+            <div id="cart-empty">
+                <p>Your cart is empty. Pick a piece from the shop and it will appear here.</p>
+                <a class="button" href="#shop">Back to shop</a>
+            </div>
+
+            <div id="cart-box" hidden>
+                <ul id="cart-items"></ul>
+                <p class="cart-total">Total: <span id="cart-total">₱0</span></p>
+
+                <form id="checkout-form">
+                    <label for="name">Full name</label>
+                    <input id="name" type="text" required>
+
+                    <label for="address">Delivery address</label>
+                    <textarea id="address" rows="2" required></textarea>
+
+                    <button type="submit" class="button">Place order</button>
+                </form>
+            </div>
+
+            <p id="order-message" hidden></p>
+        </section>
+
+        <section id="about">
+            <p class="eyebrow">03 / ABOUT</p>
+            <h2>Made different.</h2>
+            <p>ORNG is a small niche clothing brand built around clean streetwear and playful pixel-art details.</p>
+            <p>We keep the interface simple so you can spend less time searching and more time choosing what you like.
+            </p>
+        </section>
+
+        <section id="contact">
+            <p class="eyebrow">04 / CONTACT</p>
+            <h2>Get in touch.</h2>
+            <p>Questions about sizing, orders or the brand? Reach out through any of the options below.</p>
+            <div class="collection-list">
+                <div><strong>Email</strong><span><a href="mailto:hello@orng.example">hello@orng.example</a></span></div>
+                <div><strong>Instagram</strong><span>@orngstreetwear</span></div>
+                <div><strong>Facebook</strong><span>ORNG Streetwear</span></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>ORNG © 2026 — Pixel streetwear, kept simple.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
